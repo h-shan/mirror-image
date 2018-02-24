@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='inputs.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+</head>
+
+<body>
+	<div id="top">
+		<h1>hi</h1>
+	</div>
+
+	<form action="." method="POST">
+        <div>
+            <p>User Input: </p>
+            <input type="text" name="input"/>
+        </div>
+        <!-- <button class="btn sixth" value="Login"/ style="width:20%; display: block; margin: 0 auto; font-size: 30px;"> -->
+        <input type="submit" name="my-form" value="Submit"/>
+        
+    </form>
+</body>
+
+</html>
