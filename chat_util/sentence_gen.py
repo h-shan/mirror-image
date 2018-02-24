@@ -38,6 +38,7 @@ def respond(cur_senti, prev_senti, subject, user_input):
             if user_input.find(greeting) >= 0:
                 return 'Hello there!'
     p_pos_senti = 1.5 - cur_senti - prev_senti
+    p_pos_senti = max(min(p_pos_senti, 0.8), 0.2)
     print('Current sentiment', cur_senti)
     if random.uniform(0, 1) > p_pos_senti:
         return generate_sentence(subject, cur_senti)
