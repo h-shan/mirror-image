@@ -1,5 +1,4 @@
 import requests
-import nltk
 import key
 
 assert key.subscription_key
@@ -14,7 +13,7 @@ documents = {'documents' : [
   {'id': '1', 'language': 'en', 'text': user_input}
 ]}
 
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
+headers   = {"Ocp-Apim-Subscription-Key": key.subscription_key}
 response  = requests.post(sentiment_api_url, headers=headers, json=documents)
 sentiments = response.json()
 print("Sentiment:", sentiments["documents"][0]["score"])
@@ -22,11 +21,3 @@ print("Sentiment:", sentiments["documents"][0]["score"])
 response  = requests.post(key_phrase_api_url, headers=headers, json=documents)
 key_phrases = response.json()
 print("Key Phrases:", key_phrases["documents"][0]["keyPhrases"])
-
-nltk_text = nltk.word_tokenize(user_input)
-tags = nltk.pos_tag(nltk_text)
-verbs = ""
-for tag in tags:
-	if "VB" in tag[1]:
-		verbs += tag[0] + " "
-print("Verbs:", verbs.strip())
