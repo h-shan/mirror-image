@@ -1,8 +1,8 @@
 import requests
 import nltk
+import key
 
-subscription_key="e7b9069b21954881843ae0b4c5296c52"
-assert subscription_key
+assert key.subscription_key
 
 text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/"
 sentiment_api_url = text_analytics_base_url + "sentiment"
