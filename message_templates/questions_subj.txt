@@ -1,0 +1,11 @@
+Does {} bother you?
+Are you okay with {}?
+When did you begin feeling like {}?
+Did something happen that made you start feeling {}?
+How do you feel about {}?
+Is there something else about {} you want to discuss?
+Should we talk more about {}?
+Do you want to talk more about {}
+Is there more you want to tell me about {}
+Are you upset about {}?
+We can talk more about {}, would you like that?
