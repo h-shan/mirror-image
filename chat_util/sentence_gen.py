@@ -29,7 +29,8 @@ ques_subj_file.close()
 
 def respond(cur_senti, prev_senti, subject):
     p_pos_senti = 1.5 - cur_senti - prev_senti
-    if random.uniform(0, 1) <= p_pos_senti:
+    print('Current sentiment', cur_senti)
+    if random.uniform(0, 1) > p_pos_senti:
         return generate_sentence(subject, cur_senti)
     else:
         return generate_question(subject)
@@ -41,7 +42,7 @@ def generate_question(subject):
         return random.choice(ques_arr)
 
 def generate_sentence(subject, cur_senti):
-    if cur_senti < 0.5:
+    if cur_senti > 0.5:
         if subject:
             return random.choice(pos_subj_arr).format(subject)
         else:
