@@ -8,6 +8,7 @@ def parse_tweets(userName):
     auth.set_access_token(config.ACCESS_TOKEN, config.ACCESS_SECRET)
     api = tweepy.API(auth)
 
+    user = api.get_user(userName)
     tweetsFromUser = []
 
     recentTweets = api.user_timeline(screen_name = userName, count = 200, tweet_mode = "extended")
@@ -39,7 +40,13 @@ def filterExcess(tweets):
                 #print(urls[i])
                 tweet = tweet.replace(urls[i],"")
 
+        tweet = ''.join([i if ord(i) < 128 else ' ' for i in tweet])
+
+
+
         filteredTweets.append(tweet.strip())
+
+
 
     return filteredTweets
 
