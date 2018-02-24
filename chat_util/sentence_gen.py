@@ -27,7 +27,9 @@ ques_subj_file = open('message_templates/questions.txt', 'r')
 ques_subj_arr = ques_subj_file.read().splitlines()
 ques_subj_file.close()
 
-def respond(cur_senti, prev_senti, subject):
+def respond(cur_senti, prev_senti, subject, user_input):
+    if user_input.lower().find('bye') != -1:
+        return 'Have a nice day!'
     p_pos_senti = 1.5 - cur_senti - prev_senti
     print('Current sentiment', cur_senti)
     if random.uniform(0, 1) > p_pos_senti:
