@@ -1,1 +1,1 @@
-web: gunicorn app:mirror-image
+web: gunicorn app:app
