@@ -1,5 +1,6 @@
 import tweepy
 import config
+import re
 
 def parse_tweets(userName):
     #authorizes the twitter account to be able to access tweets
@@ -14,10 +15,50 @@ def parse_tweets(userName):
 
     return tweetsFromUser
 
+
+def filterExcess(tweets):
+    filteredTweets = []
+    for i in range(len(tweets)):
+        tweet = tweets[i]
+
+        #removes mentions
+        while "@" in tweet:
+            numMentions = tweet.count("@")
+            #print(numMentions)
+            for i in range(numMentions):
+                mentionStart = tweet.find("@")
+                mentionEnd = tweet.find(" ", mentionStart)
+                #print(tweet[mentionStart:mentionEnd])
+                tweet = tweet.replace(tweet[mentionStart:mentionEnd],"")
+        urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', tweet)
+        if len(urls) > 0:
+            for i in range(len(urls)):
+                #print(tweet)
+                #print(urls[i])
+                tweet = tweet.replace(urls[i],"")
+
+
+
+
+
+
+
+        filteredTweets.append(tweet)
+
+    return filteredTweets
+
+
+
+
+
+
+
 if __name__ == '__main__':
     tweets = parse_tweets('realDonaldTrump')
+    print(filterExcess(tweets))
     fh = open('tweets.txt', 'w')
     for tweet in tweets:
         fh.write(tweet)
+
     fh.close()
 
