@@ -31,7 +31,7 @@ def webhook():
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
-    if data["object"] == "page":
+    '''if data["object"] == "page":
 
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
@@ -56,8 +56,18 @@ def webhook():
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
                     pass
-
-    return "ok", 200
+    '''
+    response_message = ''
+    if 'message' in data:
+        message_text = data['message']  # the message's text
+        cur_senti, keyword = text_analytics.analyze(message_text)
+        
+        global prev_senti
+        response_message = response.respond(cur_senti, prev_senti, keyword, message_text)
+        prev_senti = cur_senti
+    else:
+        log('Invalid json')
+    return response_message, 200
 
 
 def send_message(recipient_id, message_text):
