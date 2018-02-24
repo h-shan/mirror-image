@@ -6,13 +6,28 @@ def parse_tweets(userName):
     #authorizes the twitter account to be able to access tweets
     auth = tweepy.OAuthHandler(config.CONSUMER_KEY, config.CONSUMER_SECRET)
     auth.set_access_token(config.ACCESS_TOKEN, config.ACCESS_SECRET)
-    api = tweepy.API(auth)
+    api = tweepy.API(auth, wait_on_rate_limit = True)
 
     user = api.get_user(userName)
+
+    keepTrackOfId = []
     tweetsFromUser = []
 
     recentTweets = api.user_timeline(screen_name = userName, count = 200, tweet_mode = "extended")
-    tweetsFromUser = [tweet.full_text for tweet in recentTweets]
+
+    keepTrackOfId.extend(recentTweets)
+    tweetsFromUser.extend([[tweet.full_text] for tweet in recentTweets])
+
+    oldestID = keepTrackOfId[-1].id - 1
+
+    while len(tweetsFromUser) < 2000:
+        recentTweets = api.user_timeline(screen_name = userName, count = 200, max_id = oldestID, tweet_mode = "extended")
+
+        keepTrackOfId.extend(recentTweets)
+        tweetsFromUser.extend([[tweet.full_text] for tweet in recentTweets])
+
+        oldestID = keepTrackOfId[-1].id - 1
+    #tweetsFromUser = [tweet.full_text for tweet in recentTweets]
 
     return tweetsFromUser
 
@@ -54,7 +69,8 @@ def filterExcess(tweets):
 
 if __name__ == '__main__':
     tweets = parse_tweets('realDonaldTrump')
-    print(filterExcess(tweets))
+    print(tweets)
+    # print(filterExcess(tweets))
     fh = open('tweets.txt', 'w')
     for tweet in tweets:
         fh.write(tweet)
