@@ -3,7 +3,7 @@ import sys
 import json
 from datetime import datetime
 
-from chatutil import text_analytics, sentence_gen, luis_request
+from chat_util import text_analytics, sentence_gen, luis_request
 import requests
 from flask import Flask, request
 
