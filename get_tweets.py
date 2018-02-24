@@ -10,7 +10,7 @@ def parse_tweets(userName):
 
     tweetsFromUser = []
 
-    recentTweets = api.user_timeline(screen_name = userName, count = 100, tweet_mode = "extended")
+    recentTweets = api.user_timeline(screen_name = userName, count = 200, tweet_mode = "extended")
     tweetsFromUser = [tweet.full_text for tweet in recentTweets]
 
     return tweetsFromUser
@@ -29,27 +29,19 @@ def filterExcess(tweets):
                 mentionStart = tweet.find("@")
                 mentionEnd = tweet.find(" ", mentionStart)
                 #print(tweet[mentionStart:mentionEnd])
-                tweet = tweet.replace(tweet[mentionStart:mentionEnd],"")
+                tweet = tweet.replace(tweet[mentionStart:mentionEnd],"")\
+
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', tweet)
+
         if len(urls) > 0:
             for i in range(len(urls)):
                 #print(tweet)
                 #print(urls[i])
                 tweet = tweet.replace(urls[i],"")
 
-
-
-
-
-
-
-        filteredTweets.append(tweet)
+        filteredTweets.append(tweet.strip())
 
     return filteredTweets
-
-
-
-
 
 
 
