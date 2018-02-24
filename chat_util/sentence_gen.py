@@ -41,24 +41,24 @@ def respond(cur_senti, prev_senti, subject, user_input):
     p_pos_senti = max(min(p_pos_senti, 0.8), 0.2)
     print('Current sentiment', cur_senti)
     if random.uniform(0, 1) > p_pos_senti:
-        return generate_sentence(subject, cur_senti)
+        return generate_sentence(subject, cur_senti).capitalize()
     else:
-        return generate_question(subject)
+        return generate_question(subject).capitalize()
 
 def generate_question(subject):
     if subject:
-        return random.choice(ques_subj_arr).format(subject)
+        return random.choice(ques_subj_arr).format(subject).capitalize()
     else:
         return random.choice(ques_arr)
 
 def generate_sentence(subject, cur_senti):
     if cur_senti > 0.5:
         if subject:
-            return random.choice(pos_subj_arr).format(subject)
+            return random.choice(pos_subj_arr).format(subject).capitalize()
         else:
-            return random.choice(pos_arr)
+            return random.choice(pos_arr).capitalize()
     else:
         if subject:
-            return random.choice(neg_subj_arr).format(subject)
+            return random.choice(neg_subj_arr).format(subject).capitalize()
         else:
-            return random.choice(neg_arr)
+            return random.choice(neg_arr).capitalize()
