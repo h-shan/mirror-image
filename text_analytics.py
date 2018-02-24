@@ -27,5 +27,11 @@ def analyze(user_input):
 
     response = requests.post(key_phrase_api_url, headers=headers, json=documents)
     key_phrases = response.json()
-    #print("Key Phrases:", key_phrases["documents"][0]["keyPhrases"])
-    return sentiments["documents"][0]["score"], key_phrases["documents"][0]["keyPhrases"]
+    key_phrases = key_phrases["documents"][0]["keyPhrases"]
+    m = 0
+    longest = ""
+    for s in key_phrases:
+        if len(s) > m:
+            m = len(s)
+            longest = s
+    return sentiments["documents"][0]["score"], longest

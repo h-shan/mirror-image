@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 
 import luis_request
+import text_analytics
 import requests
 from flask import Flask, request
 
@@ -40,7 +41,8 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    luis_res = luis_request.request_luis(message_text)
+                    sentiment, keyword = text_analytics.analyze(message_text)
+                    #luis_res = luis_request.request_luis(message_text)
 
                     send_message(sender_id, str(luis_res))
 
