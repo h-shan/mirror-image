@@ -3,15 +3,15 @@ import random
 postive_templates = []
 negative_templates = []
 
-pos_file = open('pos.txt', 'r')
+pos_file = open('message_templates/pos.txt', 'r')
 pos_arr = pos_file.read().splitlines()
 pos_file.close()
 
-neg_file = open('neg.txt', 'r')
+neg_file = open('message_templates/neg.txt', 'r')
 neg_arr = neg_file.read().splitlines()
 neg_file.close()
 
-ques_file = open('questions.txt', 'r')
+ques_file = open('message_templates/questions.txt', 'r')
 ques_arr = ques_file.read().splitlines()
 ques_file.close()
 

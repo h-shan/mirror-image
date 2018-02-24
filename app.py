@@ -3,9 +3,7 @@ import sys
 import json
 from datetime import datetime
 
-import sentence_gen
-import luis_request
-import text_analytics
+from chatutil import text_analytics, sentence_gen, luis_request
 import requests
 from flask import Flask, request
 
