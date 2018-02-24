@@ -1,4 +1,3 @@
-########### Python 3.6 #############
 import requests
 import key
 
@@ -9,7 +8,7 @@ headers = {
 
 params ={
     # Query parameter
-    'q': 'tell them that i say hi',
+    'q': 'who is the coolest dog in puppyland?',
     # Optional request parameters, set to default values
     'timezoneOffset': '0',
     'verbose': 'false',
@@ -23,5 +22,3 @@ try:
 
 except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
-
-####################################
