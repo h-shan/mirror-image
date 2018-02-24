@@ -1,6 +1,6 @@
 import requests
-import key
 import random
+import os
 
 GREETING_TYPE = "Greeting"
 SUMMARY_TYPE = "Summary"
@@ -11,9 +11,20 @@ TIME = "Time"
 ADJ = "Adjective"
 OPINION_TYPE = "Opinion"
 
+LUIS_KEY = None
+APP_ID = None
+
+if 'LUIS_KEY' in os.environ:
+    LUIS_KEY = os.environ['LUIS_KEY']
+    APP_ID = os.environ['APP_ID']
+else:
+    import key
+    LUIS_KEY = key.LUIS_KEY
+    APP_ID = key.APP_ID
+
 headers = {
     # Request headers
-    'Ocp-Apim-Subscription-Key': key.LUIS_KEY,
+    'Ocp-Apim-Subscription-Key': LUIS_KEY,
 }
 
 def make_response(result):
@@ -57,7 +68,7 @@ def request_luis(text):
     }
 
     try:
-        r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/' + key.APP_ID ,headers=headers, params=params)
+        r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/' + APP_ID ,headers=headers, params=params)
         resp = make_response(r.json())
         print(r.json())
         if resp == "":
