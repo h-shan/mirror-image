@@ -1,6 +1,24 @@
-Wow, thats really cool!
+Wow, that's really cool!
 Awesome, I'd like to hear more about your {{}}.
 {{}} is the best!
-
+Tell me more about {{}}.
+How much time have you spend on {{}}?
+Do you want to talk more about {{}}?
+I think {{}} is really interesting.
+Thats amazing!
+I love {{}}!
+{{}} is really cool!
+That's really cool, Wow!
+I'd like to hear more about {{}}.
+Thats great, tell me more.
+Wow, that's great!
+You just made my day.
+I hope you are proud of yourself, because I am!
+You are stunning!
+You inspire me. I feel so much better when you talk to me about {{}}!
+You are more fun than anyone or anything I know, including bubble wrap.
+You and your {{}} inspire me.
+That is stunning!
+I am so proud of you!
 
 
