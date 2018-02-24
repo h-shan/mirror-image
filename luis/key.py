@@ -1,2 +1,0 @@
-LUIS_KEY = "071b41a4231948eabb5df19bf195c9f7"
-APP_ID = "a3a18f62-c2da-4e46-a03e-06e42e5cbda7"
