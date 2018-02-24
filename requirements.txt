@@ -1,1 +1,6 @@
 gunicorn
+flask
+luis_request
+random
+requests
+key
