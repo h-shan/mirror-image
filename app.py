@@ -41,12 +41,12 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    sentiment, keyword = text_analytics.analyze(message_text)
+                    cur_senti, keyword = text_analytics.analyze(message_text)
                     #luis_res = luis_request.request_luis(message_text)
                     
                     global prev_senti
-                    send_message(sender_id, sentence_gen.respond(sentiment, prev_senti, keyword))
-                    prev_senti = sentiment
+                    send_message(sender_id, sentence_gen.respond(cur_senti, prev_senti, keyword))
+                    prev_senti = cur_senti
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

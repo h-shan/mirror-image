@@ -24,7 +24,7 @@ def respond(cur_senti, prev_senti, subject):
         return ques_temp.replace("{{}}", subject)
 
 def generate_sentence(subject, cur_senti):
-    if cur_senti > 0.5:
+    if cur_senti < 0.5:
         pos_temp = random.choice(pos_arr)
         return pos_temp.replace("{{}}", subject)
     else:
