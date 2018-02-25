@@ -5,7 +5,7 @@ import requests
 from datetime import datetime
 from flask import Flask, request
 
-from chat_util import text_analytics, response, luis_request
+from chat_util import text_analytics, response
 
 app = Flask(__name__)
 

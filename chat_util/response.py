@@ -1,4 +1,5 @@
 import random
+import luis_request
 
 postive_templates = []
 negative_templates = []
@@ -27,16 +28,21 @@ ques_subj_file = open('message_templates/questions.txt', 'r')
 ques_subj_arr = ques_subj_file.read().splitlines()
 ques_subj_file.close()
 
-greetings = ['hello', 'hi', 'hey']
+greetings = ['hello', 'hi', 'hey', "how are you?", "hello there!"]
+endings = ["have a nice day", "see you later", "bye"]
 
 def respond(cur_senti, prev_senti, subject, user_input):
+    luis_res = luis_request.request(user_input)
+    intent = result["topScoringIntent"]["intent"]
+    entities = result["entities"]
+
+    if luis_request.GREETING_INTENT in intent:
+        return random.choice(greetings)
+    elif luis_request.END_INTENT in intent:
+        return random.choice(endings)
+
     user_input = user_input.lower()
-    if user_input.find('bye') >= 0:
-        return 'Have a nice day!'
-    else:
-        for greeting in greetings:
-            if user_input.find(greeting) >= 0:
-                return 'Hello there!'
+    
     p_pos_senti = 1.5 - cur_senti - prev_senti
     p_pos_senti = max(min(p_pos_senti, 0.8), 0.2)
     print('Current sentiment', cur_senti)
