@@ -1,11 +1,11 @@
 import os
 import sys
 import json
+import requests
 from datetime import datetime
+from flask import Flask, request
 
 from chat_util import text_analytics, response, luis_request
-import requests
-from flask import Flask, request
 
 app = Flask(__name__)
 
