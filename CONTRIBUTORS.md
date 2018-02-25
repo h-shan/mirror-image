@@ -16,6 +16,7 @@ Helped train the Azure LUIS AI model and implemented LUIS API into server
 Created Web client for this project
 
 David Fan
+davidf3@illinois.edu
 Helped implement heroku server
 
 Kyle Jew
