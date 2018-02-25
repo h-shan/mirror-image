@@ -30,7 +30,7 @@ def test():
 
 @app.route('/', methods=['POST'])
 def webhook():
-
+    return 'TEST SUCCESS 2', 200
     # endpoint for processing incoming messaging events
 
     data = request.get_json()
