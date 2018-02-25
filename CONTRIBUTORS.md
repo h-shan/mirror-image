@@ -12,8 +12,7 @@ Helped train the Azure LUIS AI model
 
 Brandon Wang
 bmw4@illinois.edu
-Helped train the Azure LUIS AI model and implemented LUIS API into server
-Created Web client for this project
+Helped train the Azure LUIS AI model, implemented LUIS API into server, and created Web client for this project
 
 David Fan
 davidf3@illinois.edu
