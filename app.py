@@ -3,7 +3,7 @@ import sys
 import json
 from datetime import datetime
 
-from chat_util import text_analytics, sentence_gen, luis_request
+from chat_util import text_analytics, response, luis_request
 import requests
 from flask import Flask, request
 
@@ -45,7 +45,7 @@ def webhook():
                     #luis_res = luis_request.request_luis(message_text)
                     
                     global prev_senti
-                    send_message(sender_id, sentence_gen.respond(cur_senti, prev_senti, keyword))
+                    send_message(sender_id, response.respond(cur_senti, prev_senti, keyword, message_text))
                     prev_senti = cur_senti
 
                 if messaging_event.get("delivery"):  # delivery confirmation

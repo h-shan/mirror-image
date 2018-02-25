@@ -1,20 +1,9 @@
 Do you want to tell me how you feel?
-How do you feel about {{}}?
 Is there something you want to talk about?
-Does {{}} bother you?
-Are you okay with {{}}?
-When did you begin feeling like {{}}?
-Did something happen that made you start feeling {{}}?
 How can I best support you right now?
 Have you thought about getting help?
 What is on your mind?
-Is there something else about {{}} you want to discuss?
-Should we talk more about {{}}?
-Do you want to talk more about {{}}
-Is there more you want to tell me about {{}}
 How are you feeling?
 Is something bothering you?
-Are you upset about {{}}?
-We can talk more about {{}}, would you like that?
 Do you need any assistance?
 What happened?
