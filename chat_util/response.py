@@ -1,5 +1,5 @@
 import random
-import luis_request
+from . import luis_request
 
 postive_templates = []
 negative_templates = []
