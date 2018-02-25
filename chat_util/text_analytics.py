@@ -23,7 +23,6 @@ def analyze(user_input):
     headers = {"Ocp-Apim-Subscription-Key": SUBSCRIPTION_KEY}
     response = requests.post(sentiment_api_url, headers=headers, json=documents)
     sentiments = response.json()
-    #print("Sentiment:", sentiments["documents"][0]["score"])
 
     response = requests.post(key_phrase_api_url, headers=headers, json=documents)
     key_phrases = response.json()

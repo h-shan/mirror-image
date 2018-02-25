@@ -2,14 +2,20 @@ import requests
 import random
 import os
 
-GREETING_TYPE = "Greeting"
-SUMMARY_TYPE = "Summary"
+GREETING_INTENT = "Greeting"
+SUMMARY_INTENT = "Summary"
+OPINION_INTENT = "Opinion"
+COMMAND_INTENT = "Command"
+EXCLAIM_INTENT = "Exclaim"
+DESCRIP_INTENT = "Description"
+DESIRE_INTENT = "Desire"
+END_INTENT = "End"
+
 SELF = "Self"
 MOOD = "Mood"
 DAY = "Day"
 TIME = "Time"
 ADJ = "Adjective"
-OPINION_TYPE = "Opinion"
 
 LUIS_KEY = None
 APP_ID = None
@@ -27,36 +33,36 @@ headers = {
     'Ocp-Apim-Subscription-Key': LUIS_KEY,
 }
 
-def make_response(result):
-    intent = result["topScoringIntent"]["intent"]
-    entities = result["entities"]
-    if GREETING_TYPE in intent:
-        poss = ["Hello", "How are you?", "Hi"]
-        return random.choice(poss)
-    elif SUMMARY_TYPE in intent:
-        if SELF in intent:
-            for entity in entities:
-                if entity["type"] == MOOD:
-                    return "Why are you " + entity["entity"] + "?"
-        elif DAY in intent:
-            time = ""
-            adj = ""
-            for entity in entities:
-                if entity["type"] == TIME:
-                    time = entity["entity"] 
-                elif entity["type"] == ADJ:
-                    adj = entity["entity"] 
-            if time != "" and adj != "":
-                return "Why was " + time + " " + adj + "?"
-        return "Tell me more"
-    elif OPINION_TYPE in intent:
-        pos = ["I agree", "You're right", "I think so too"]
-        neg = ["I disagree"]
-        return random.choice(pos)
-    else:
-        return ""
+# def make_response(result):
+#     intent = result["topScoringIntent"]["intent"]
+#     entities = result["entities"]
+#     if GREETING_TYPE in intent:
+#         poss = ["Hello", "How are you?", "Hi"]
+#         return random.choice(poss)
+#     elif SUMMARY_TYPE in intent:
+#         if SELF in intent:
+#             for entity in entities:
+#                 if entity["type"] == MOOD:
+#                     return "Why are you " + entity["entity"] + "?"
+#         elif DAY in intent:
+#             time = ""
+#             adj = ""
+#             for entity in entities:
+#                 if entity["type"] == TIME:
+#                     time = entity["entity"] 
+#                 elif entity["type"] == ADJ:
+#                     adj = entity["entity"] 
+#             if time != "" and adj != "":
+#                 return "Why was " + time + " " + adj + "?"
+#         return "Tell me more"
+#     elif OPINION_TYPE in intent:
+#         pos = ["I agree", "You're right", "I think so too"]
+#         neg = ["I disagree"]
+#         return random.choice(pos)
+#     else:
+#         return ""
 
-def request_luis(text):
+def request(text):
     params ={
         # Query parameter
         'q': text,
@@ -69,12 +75,13 @@ def request_luis(text):
 
     try:
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/' + APP_ID ,headers=headers, params=params)
-        resp = make_response(r.json())
-        print(r.json())
-        if resp == "":
-            return r.json()
-        else:
-            return resp
+        # resp = make_response(r.json())
+        # print(r.json())
+        # if resp == "":
+        #     return r.json()
+        # else:
+        #     return resp
+        return r.json()
 
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
