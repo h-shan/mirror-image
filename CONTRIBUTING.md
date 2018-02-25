@@ -1,4 +1,4 @@
-#Contibuting to Mirror Image
+#Contributing to Mirror Image
 
 ## Welcome to Mirror Image! 
 
