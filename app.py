@@ -30,6 +30,7 @@ def test():
 
 @app.route('/', methods=['POST'])
 def webhook():
+    log('test success 2')
     return 'TEST SUCCESS 2', 200
     # endpoint for processing incoming messaging events
 
