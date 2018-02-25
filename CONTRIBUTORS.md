@@ -20,4 +20,5 @@ davidf3@illinois.edu
 Helped implement heroku server
 
 Kyle Jew
+kjew2@illinois.edu
 Constructed message templates
