@@ -12,26 +12,9 @@ app = Flask(__name__)
 
 prev_senti = 0.5
 
-@app.route('/test', methods=['GET'])
-def test():
-    return 'TEST SUCCESS', 200
-
-# @app.route('/', methods=['GET'])
-# def verify():
-#     # when the endpoint is registered as a webhook, it must echo back
-#     # the 'hub.challenge' value it receives in the query arguments
-#     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-#         if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
-#             return "Verification token mismatch", 403
-#         return request.args["hub.challenge"], 200
-
-#     return "Hello world", 200
-
 
 @app.route('/', methods=['POST'])
 def webhook():
-    log('test success 2')
-    #return 'TEST SUCCESS 2', 200
     # endpoint for processing incoming messaging events
 
     data = request.get_json()
