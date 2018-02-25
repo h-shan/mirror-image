@@ -9,6 +9,7 @@ EXCLAIM_INTENT = "Exclaim"
 DESCRIP_INTENT = "Description"
 DESIRE_INTENT = "Desire"
 END_INTENT = "End"
+NONE_INTENT = "None"
 
 SELF = "Self"
 MOOD = "Mood"
