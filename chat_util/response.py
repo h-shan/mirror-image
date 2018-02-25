@@ -34,8 +34,8 @@ confuse = ["could you repeat that?", "what did you say?", "i don't seem to under
 
 def respond(cur_senti, prev_senti, subject, user_input):
     luis_res = luis_request.request(user_input)
-    intent = result["topScoringIntent"]["intent"]
-    entities = result["entities"]
+    intent = luis_res["topScoringIntent"]["intent"]
+    entities = luis_res["entities"]
 
     if luis_request.NONE_INTENT == intent:
         return random.choice(confuse)
