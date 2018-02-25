@@ -28,9 +28,9 @@ ques_subj_file = open('message_templates/questions.txt', 'r')
 ques_subj_arr = ques_subj_file.read().splitlines()
 ques_subj_file.close()
 
-greetings = ['hello', 'hi', 'hey', "how are you?", "hello there!"]
-endings = ["have a nice day", "see you later", "bye"]
-confuse = ["could you repeat that?", "what did you say?", "i don't seem to understand"]
+greetings = ['Hello!', 'Hi :)', 'Hey, how are you?', "Hello there!"]
+endings = ["Have a nice day!", "See you later!", "Bye!"]
+confuse = ["Sorry, could you repeat that?", "i don't seem to understand"]
 
 def respond(cur_senti, prev_senti, subject, user_input):
     luis_res = luis_request.request(user_input)
